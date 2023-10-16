@@ -57,8 +57,8 @@ def make_time_series(courses_df: pd.DataFrame, ies_df: pd.DataFrame) -> pd.DataF
     return time_series_df
 
 print("Making time series dataframe...")
-courses_df = get_cursos_df('cursos.parquet')
-ies_df = pd.read_parquet('ies.parquet')
+courses_df = get_cursos_df('parquet_files/cursos.parquet')
+ies_df = pd.read_parquet('parquet_files/ies.parquet')
 time_series_df = make_time_series(courses_df, ies_df)
 print("Done.")
 
@@ -91,4 +91,4 @@ time_series_df['no_ies_in_2022'] = time_series_df["co_ies"].map(ies_name_mapper)
 
 time_series_df['nu_ano_censo'] = time_series_df['nu_ano_censo'].astype(int)
 final_columns = ['co_ies', 'no_ies','no_uf', 'no_regiao', 'nu_ano_censo', 'qt_ing', 'predictions']
-time_series_df[final_columns].to_parquet("time_series_predictions.parquet")
+time_series_df[final_columns].to_parquet("parquet_files/time_series_predictions.parquet")

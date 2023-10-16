@@ -5,7 +5,7 @@ import plotly.express as px
 
 def render_dash():
 
-    time_series_df = pd.read_parquet("time_series_predictions.parquet")
+    time_series_df = pd.read_parquet("parquet_files/time_series_predictions.parquet")
 
     region_selection, state_selection, ies_selection, filter_year_start, filter_year_end \
           = streamlit_sidebar(time_series_df)
