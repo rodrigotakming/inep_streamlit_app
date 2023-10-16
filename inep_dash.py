@@ -12,7 +12,7 @@ def render_dash():
     
     time_series_df = time_series_df.query("nu_ano_censo >= @filter_year_start and nu_ano_censo <= @filter_year_end").reset_index(drop=True)
 
-    st.subheader('Modelo Previsão de ingresso de alunos.')
+    st.header('Modelo Previsão de ingresso de alunos.')
 
     time_series_df = filter_data_frame_if_selected(time_series_df, region_selection, "no_regiao")
     time_series_df = filter_data_frame_if_selected(time_series_df, state_selection, "no_uf")
@@ -30,6 +30,7 @@ def render_dash():
     px_line = px.line(time_series_to_plot, 
                       x = [str(year) for year in time_series_to_plot.index], 
                       y = time_series_to_plot.columns.to_list(),
+                      title = "Previsão das seleções",
                       markers=True)
     
     px_line.update_layout(
@@ -44,8 +45,11 @@ def render_dash():
     px_line.update_traces(line=dict(color='#748cab'), selector=dict(name='Valor Real'))
     px_line.update_traces(line=dict(color='red', dash='dash', width=3), selector=dict(name='Predição do Modelo'))
 
-
+    
     st.plotly_chart(px_line, use_container_width = True, use_container_height = True)
+    st.divider()
+    st.caption('Fonte: INEP (2022) - Censo 2010 até 2022 de cursos presenciais')
+    
 
     
 render_dash()
