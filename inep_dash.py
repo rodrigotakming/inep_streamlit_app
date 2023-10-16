@@ -38,17 +38,12 @@ def render_dash():
                         yaxis_title="Total de Alunos",
                         yaxis_title_font=dict(size=20),
                         legend_title_text='Legenda:',
-                        # width=800,  # Set the width in pixels
-                        # height=600 
                     )
     
     
     px_line.update_traces(line=dict(color='#fdf0d5'), selector=dict(name='Valor Real'))
     px_line.update_traces(line=dict(color='red', dash='dash', width=3), selector=dict(name='Predição do Modelo'))
-    px_line.update_traces(marker=dict(size=200,
-                              line=dict(width=2,
-                                        color='DarkSlateGrey')),
-                  selector=dict(mode='markers'))
+
 
     st.plotly_chart(px_line, use_container_width = True, use_container_height = True)
 
