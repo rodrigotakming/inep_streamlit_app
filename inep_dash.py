@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 from streamlit_sidebar import streamlit_sidebar, filter_data_frame_if_selected
-import matplotlib.pyplot as plt
 import plotly.express as px
 
 def render_dash():
@@ -20,15 +19,6 @@ def render_dash():
     time_series_df = filter_data_frame_if_selected(time_series_df, ies_selection, "no_ies")
 
     time_series_to_plot = time_series_df.groupby("nu_ano_censo")[["qt_ing", "predictions"]].sum()
-    # plt.style.use('ggplot')
-    # fig, ax = plt.subplots()
-    # ax.plot(time_series_to_plot['qt_ing'],marker="o", color="black", label = 'Valor Real')
-    # ax.plot(time_series_to_plot['predictions'],marker='*', color="red", label = 'Random Forest')
-    # ax.legend(loc=(1.01, 0.81))
-    # ax.set_xlabel('Ano', fontsize = 12)
-    # ax.set_ylabel('Total de Alunos Ingressantes', fontsize = 12)
-
-    # st.pyplot(fig)
 
     rename_col = {
         'qt_ing': 'Valor Real',           
