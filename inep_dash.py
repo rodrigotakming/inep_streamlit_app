@@ -41,7 +41,7 @@ def render_dash():
                     )
     
     
-    px_line.update_traces(line=dict(color='#fdf0d5'), selector=dict(name='Valor Real'))
+    px_line.update_traces(line=dict(color='#748cab'), selector=dict(name='Valor Real'))
     px_line.update_traces(line=dict(color='red', dash='dash', width=3), selector=dict(name='Predição do Modelo'))
 
 
